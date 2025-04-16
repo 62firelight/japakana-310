@@ -7,11 +7,17 @@
 
 .hiragana {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .row {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  margin: 0.15em;
+}
+
+.row * {
+  width: 4em;
+  margin: 0 0.15em;
 }
 

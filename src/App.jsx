@@ -126,19 +126,123 @@ function App() {
                 </div>
             </div>
 
-            {/* <div className="katakana">
-                <div className="row">アイウエオ</div>
-                <div className="row">かきくけこ</div>
-                <div className="row">サシスセソ</div>
-                <div className="row">タチツテト</div>
-                <div className="row">ナニヌネノ</div>
-                <div className="row">ハヒフヘホ</div>
-                <div className="row">マミムメモ</div>
-                <div className="row">ヤ　ユ　ヨ</div>
-                <div className="row">ラリルレロ</div>
-                <div className="row">ワ　　　ヲ</div>
-                <div className="row">ン</div>
-            </div> */}
+            <div className="hiragana">
+                <div className="row">
+                    {/*Label Row */}
+                    <button>ー</button>
+                    <button>a</button>
+                    <button>i</button>
+                    <button>u</button>
+                    <button>e</button>
+                    <button>o</button>
+                </div>
+
+                <div className="row">
+                    {/* Vowel Row */}
+                    <button>ー</button>
+                    <button>ア</button>
+                    <button>イ</button>
+                    <button>ウ</button>
+                    <button>エ</button>
+                    <button>オ</button>
+                </div>
+
+                {/* k row */}
+                <div className="row">
+                    <button>k</button>
+                    <button>カ</button>
+                    <button>キ</button>
+                    <button>ク</button>
+                    <button>ケ</button>
+                    <button>コ</button>
+                </div>
+
+                {/* s row */}
+                <div className="row">
+                    <button>s</button>
+                    <button>サ</button>
+                    <button>シ</button>
+                    <button>ス</button>
+                    <button>セ</button>
+                    <button>ソ</button>
+                </div>
+
+                {/* t row */}
+                <div className="row">
+                    <button>t</button>
+                    <button>タ</button>
+                    <button>チ</button>
+                    <button>ツ</button>
+                    <button>テ</button>
+                    <button>ト</button>
+                </div>
+
+                {/* n row */}
+                <div className="row">
+                    <button>n</button>
+                    <button>ナ</button>
+                    <button>ニ</button>
+                    <button>ヌ</button>
+                    <button>ネ</button>
+                    <button>ノ</button>
+                </div>
+
+                {/* h row */}
+                <div className="row">
+                    <button>h</button>
+                    <button>ハ</button>
+                    <button>ヒ</button>
+                    <button>フ</button>
+                    <button>へ</button>
+                    <button>ホ</button>
+                </div>
+
+                {/* m row */}
+                <div className="row">
+                    <button>m</button>
+                    <button>マ</button>
+                    <button>三</button>
+                    <button>ム</button>
+                    <button>メ</button>
+                    <button>モ</button>
+                </div>
+
+                {/* y row */}
+                <div className="row">
+                    <button>y</button>
+                    <button>ヤ</button>
+                    <button>ー</button>
+                    <button>ユ</button>
+                    <button>ー</button>
+                    <button>ヨ</button>
+                </div>
+
+                {/* r row */}
+                <div className="row">
+                    <button>r</button>
+                    <button>ラ</button>
+                    <button>リ</button>
+                    <button>ル</button>
+                    <button>レ</button>
+                    <button>ロ</button>
+                </div>
+
+                {/* w row */}
+                <div className="row">
+                    <button>w</button>
+                    <button>ワ</button>
+                    <button>ー</button>
+                    <button>ー</button>
+                    <button>ー</button>
+                    <button>ヲ</button>
+                </div>
+
+                {/* n row */}
+                <div className="row">
+                    <button>n</button>
+                    <button>ン</button>
+                </div>
+            </div>
         </>
     );
 }

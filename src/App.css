@@ -5,9 +5,13 @@
   text-align: center;
 }
 
-.hiragana {
+.hiragana, .katakana {
   display: flex;
   flex-direction: column;
+}
+
+.header {
+  color: yellow;
 }
 
 .row {

@@ -8,20 +8,21 @@ function App() {
         <>
             <h1>Japakana</h1>
 
+            <h2>Hiragana</h2>
             <div className="hiragana">
                 <div className="row">
                     {/*Label Row */}
-                    <button>ー</button>
-                    <button>a</button>
-                    <button>i</button>
-                    <button>u</button>
-                    <button>e</button>
-                    <button>o</button>
+                    <button className="header">ー</button>
+                    <button className="header">a</button>
+                    <button className="header">i</button>
+                    <button className="header">u</button>
+                    <button className="header">e</button>
+                    <button className="header">o</button>
                 </div>
 
                 <div className="row">
                     {/* Vowel Row */}
-                    <button>ー</button>
+                    <button className="header">ー</button>
                     <button>あ</button>
                     <button>い</button>
                     <button>う</button>
@@ -31,7 +32,7 @@ function App() {
 
                 {/* k row */}
                 <div className="row">
-                    <button>k</button>
+                    <button className="header">k</button>
                     <button>か</button>
                     <button>き</button>
                     <button>く</button>
@@ -41,7 +42,7 @@ function App() {
 
                 {/* s row */}
                 <div className="row">
-                    <button>s</button>
+                    <button className="header">s</button>
                     <button>さ</button>
                     <button>し</button>
                     <button>す</button>
@@ -51,7 +52,7 @@ function App() {
 
                 {/* t row */}
                 <div className="row">
-                    <button>t</button>
+                    <button className="header">t</button>
                     <button>た</button>
                     <button>ち</button>
                     <button>つ</button>
@@ -61,7 +62,7 @@ function App() {
 
                 {/* n row */}
                 <div className="row">
-                    <button>n</button>
+                    <button className="header">n</button>
                     <button>な</button>
                     <button>に</button>
                     <button>ぬ</button>
@@ -71,7 +72,7 @@ function App() {
 
                 {/* h row */}
                 <div className="row">
-                    <button>h</button>
+                    <button className="header">h</button>
                     <button>は</button>
                     <button>ひ</button>
                     <button>ふ</button>
@@ -81,7 +82,7 @@ function App() {
 
                 {/* m row */}
                 <div className="row">
-                    <button>m</button>
+                    <button className="header">m</button>
                     <button>ま</button>
                     <button>み</button>
                     <button>む</button>
@@ -91,7 +92,7 @@ function App() {
 
                 {/* y row */}
                 <div className="row">
-                    <button>y</button>
+                    <button className="header">y</button>
                     <button>や</button>
                     <button>ー</button>
                     <button>ゆ</button>
@@ -101,7 +102,7 @@ function App() {
 
                 {/* r row */}
                 <div className="row">
-                    <button>r</button>
+                    <button className="header">r</button>
                     <button>ら</button>
                     <button>り</button>
                     <button>る</button>
@@ -111,7 +112,7 @@ function App() {
 
                 {/* w row */}
                 <div className="row">
-                    <button>w</button>
+                    <button className="header">w</button>
                     <button>わ</button>
                     <button>ー</button>
                     <button>ー</button>
@@ -121,25 +122,26 @@ function App() {
 
                 {/* n row */}
                 <div className="row">
-                    <button>n</button>
+                    <button className="header">n</button>
                     <button>ん</button>
                 </div>
             </div>
 
-            <div className="hiragana">
+            <h2>Katakana</h2>
+            <div className="katakana">
                 <div className="row">
                     {/*Label Row */}
-                    <button>ー</button>
-                    <button>a</button>
-                    <button>i</button>
-                    <button>u</button>
-                    <button>e</button>
-                    <button>o</button>
+                    <button className="header">ー</button>
+                    <button className="header">a</button>
+                    <button className="header">i</button>
+                    <button className="header">u</button>
+                    <button className="header">e</button>
+                    <button className="header">o</button>
                 </div>
 
                 <div className="row">
                     {/* Vowel Row */}
-                    <button>ー</button>
+                    <button className="header">ー</button>
                     <button>ア</button>
                     <button>イ</button>
                     <button>ウ</button>
@@ -149,7 +151,7 @@ function App() {
 
                 {/* k row */}
                 <div className="row">
-                    <button>k</button>
+                    <button className="header">k</button>
                     <button>カ</button>
                     <button>キ</button>
                     <button>ク</button>
@@ -159,7 +161,7 @@ function App() {
 
                 {/* s row */}
                 <div className="row">
-                    <button>s</button>
+                    <button className="header">s</button>
                     <button>サ</button>
                     <button>シ</button>
                     <button>ス</button>
@@ -169,7 +171,7 @@ function App() {
 
                 {/* t row */}
                 <div className="row">
-                    <button>t</button>
+                    <button className="header">t</button>
                     <button>タ</button>
                     <button>チ</button>
                     <button>ツ</button>
@@ -179,7 +181,7 @@ function App() {
 
                 {/* n row */}
                 <div className="row">
-                    <button>n</button>
+                    <button className="header">n</button>
                     <button>ナ</button>
                     <button>ニ</button>
                     <button>ヌ</button>
@@ -189,7 +191,7 @@ function App() {
 
                 {/* h row */}
                 <div className="row">
-                    <button>h</button>
+                    <button className="header">h</button>
                     <button>ハ</button>
                     <button>ヒ</button>
                     <button>フ</button>
@@ -199,7 +201,7 @@ function App() {
 
                 {/* m row */}
                 <div className="row">
-                    <button>m</button>
+                    <button className="header">m</button>
                     <button>マ</button>
                     <button>三</button>
                     <button>ム</button>
@@ -209,7 +211,7 @@ function App() {
 
                 {/* y row */}
                 <div className="row">
-                    <button>y</button>
+                    <button className="header">y</button>
                     <button>ヤ</button>
                     <button>ー</button>
                     <button>ユ</button>
@@ -219,7 +221,7 @@ function App() {
 
                 {/* r row */}
                 <div className="row">
-                    <button>r</button>
+                    <button className="header">r</button>
                     <button>ラ</button>
                     <button>リ</button>
                     <button>ル</button>
@@ -229,7 +231,7 @@ function App() {
 
                 {/* w row */}
                 <div className="row">
-                    <button>w</button>
+                    <button className="header">w</button>
                     <button>ワ</button>
                     <button>ー</button>
                     <button>ー</button>
@@ -239,7 +241,7 @@ function App() {
 
                 {/* n row */}
                 <div className="row">
-                    <button>n</button>
+                    <button className="header">n</button>
                     <button>ン</button>
                 </div>
             </div>

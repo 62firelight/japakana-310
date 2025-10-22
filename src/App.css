@@ -25,3 +25,7 @@
   margin: 0 0.15em;
 }
 
+.char-button-selected {
+  background-color: orange;
+}
+

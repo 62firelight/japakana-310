@@ -26,6 +26,10 @@ function App() {
     }
 
     function setNewSelectedChars(newChar) {
+        if (newChar === "ー") {
+            return;
+        }
+
         if (!selectedChars.includes(newChar)) {
             // Add character if not selected
             setSelectedChars([...selectedChars, newChar]);

@@ -10,6 +10,6 @@ const HIRAGANA_CHARS = [
     ["ら", "り", "る", "れ", "ろ"],
     ["わ", "ー", "ー", "ー", "を"],
     ["ん"]
-]
+];
 
 export default HIRAGANA_CHARS;

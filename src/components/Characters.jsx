@@ -2,10 +2,10 @@ import { useState } from "react";
 import HIRAGANA_CHARS from "../util/HiraganaChars";
 import KATAKANA_CHARS from "../util/KatakanaChars";
 import CharButton from "./CharButton";
+import { useSearchParams } from "react-router";
 
 function Characters(props) {
     const [selectedChars, setSelectedChars] = useState([]);
-
     const rows = createRows(props.type);
 
     function createRows(type) {
@@ -45,9 +45,28 @@ function Characters(props) {
         if (!selectedChars.includes(newChar)) {
             // Add character if not selected
             setSelectedChars([...selectedChars, newChar]);
+            props.setSearchParams((searchParams) => {
+                searchParams.set("charactersToStudy", [
+                    ...selectedChars,
+                    newChar,
+                ]);
+                return searchParams;
+            });
         } else {
             // Remove character if already selected
             setSelectedChars(selectedChars.filter((char) => char !== newChar));
+
+            props.setSearchParams((searchParams) => {
+                searchParams.set(
+                    "charactersToStudy",
+                    selectedChars.filter((char) => char !== newChar)
+                );
+
+                if (searchParams.get("charactersToStudy").length === 0) {
+                    searchParams.delete("charactersToStudy");
+                }
+                return searchParams;
+            });
         }
     }
 

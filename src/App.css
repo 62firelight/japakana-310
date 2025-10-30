@@ -5,7 +5,7 @@
   text-align: center;
 }
 
-.hiragana, .katakana {
+.row {
   display: flex;
   flex-direction: column;
 }

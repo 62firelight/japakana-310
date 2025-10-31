@@ -2,8 +2,22 @@ import { useState } from "react";
 import ANSWERS from "../util/Answers";
 
 function CharactersStudy(props) {
-    const [currentCharQuestion, setCurrentCharQuestion] = useState("あ");
+    const charactersToStudy = props.selectedChars;
+
+    const [currentCharQuestion, setCurrentCharQuestion] = useState(
+        charactersToStudy.length > 0 ? charactersToStudy[0] : ""
+    );
     const [currentAnswer, setCurrentAnswer] = useState("");
+    const [progressIndex, setProgressIndex] = useState(0);
+
+    function resetProgress() {
+        setProgressIndex(0);
+        setCurrentCharQuestion(charactersToStudy[0]);
+    }
+
+    if (props.isVisible && currentCharQuestion === "") {
+        resetProgress();
+    }
 
     function handleChange(event) {
         setCurrentAnswer(event.target.value);
@@ -20,6 +34,16 @@ function CharactersStudy(props) {
             alert("Correct!");
         } else {
             alert("Incorrect");
+        }
+
+        if (progressIndex < charactersToStudy.length - 1) {
+            setCurrentCharQuestion(charactersToStudy[progressIndex + 1]);
+            setProgressIndex(progressIndex + 1);
+        } else {
+            alert("Finished!");
+            props.setStudyMode(false);
+            props.setSelectedChars([]);
+            resetProgress();
         }
 
         setCurrentAnswer("");

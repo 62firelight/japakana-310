@@ -12,7 +12,9 @@ function Home(props) {
         <>
             <CharactersStudy
                 isVisible={studyMode == true}
+                setStudyMode={setStudyMode}
                 selectedChars={selectedChars}
+                setSelectedChars={setSelectedChars}
             />
 
             <Characters

@@ -54,7 +54,17 @@ function Characters(props) {
         return (
             <div className="kana-chars">
                 <h1>Characters</h1>
-                <button onClick={() => props.setStudyMode(true)}>Study!</button>
+                <button
+                    onClick={() =>
+                        props.selectedChars.length > 0
+                            ? props.setStudyMode(true)
+                            : alert(
+                                  "Please select at least one character to study first."
+                              )
+                    }
+                >
+                    Study!
+                </button>
                 <div className="rows">{rows}</div>
             </div>
         );

@@ -10,7 +10,6 @@ createRoot(document.getElementById("root")).render(
         <BrowserRouter>
             <Routes>
                 <Route index element={<Home />} />
-                <Route path="char-stud  y" element={<CharactersStudy />} />
             </Routes>
         </BrowserRouter>
     </StrictMode>

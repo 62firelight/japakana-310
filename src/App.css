@@ -29,3 +29,22 @@
   background-color: orange;
 }
 
+.character-study {
+  display: flex;
+  flex-direction: column;
+}
+
+.character-study * {
+  margin: 0.125rem;
+}
+
+.current-char {
+  font-size: 10rem;
+}
+
+.character-study input {
+  text-align: center;
+  height: 5rem;
+  font-size: 2.5rem;
+  margin-bottom: 0.25rem;
+}

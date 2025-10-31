@@ -1,11 +1,8 @@
-import { useState } from "react";
 import HIRAGANA_CHARS from "../util/HiraganaChars";
 import KATAKANA_CHARS from "../util/KatakanaChars";
 import CharButton from "./CharButton";
-import { useSearchParams } from "react-router";
 
 function Characters(props) {
-    const [selectedChars, setSelectedChars] = useState([]);
     const rows = createRows(props.type);
 
     function createRows(type) {
@@ -29,7 +26,7 @@ function Characters(props) {
                     <CharButton
                         char={char}
                         key={char}
-                        isSelected={selectedChars.includes(char)}
+                        isSelected={props.selectedChars.includes(char)}
                         setSelectedChars={setNewSelectedChars}
                     />
                 ))}
@@ -42,44 +39,26 @@ function Characters(props) {
             return;
         }
 
-        if (!selectedChars.includes(newChar)) {
+        if (!props.selectedChars.includes(newChar)) {
             // Add character if not selected
-            setSelectedChars([...selectedChars, newChar]);
-            props.setSearchParams((searchParams) => {
-                searchParams.set("charactersToStudy", [
-                    ...selectedChars,
-                    newChar,
-                ]);
-                return searchParams;
-            });
+            props.setSelectedChars([...props.selectedChars, newChar]);
         } else {
             // Remove character if already selected
-            setSelectedChars(selectedChars.filter((char) => char !== newChar));
-
-            props.setSearchParams((searchParams) => {
-                searchParams.set(
-                    "charactersToStudy",
-                    selectedChars.filter((char) => char !== newChar)
-                );
-
-                if (searchParams.get("charactersToStudy").length === 0) {
-                    searchParams.delete("charactersToStudy");
-                }
-                return searchParams;
-            });
+            props.setSelectedChars(
+                props.selectedChars.filter((char) => char !== newChar)
+            );
         }
     }
 
-    return (
-        <div className="kana-chars">
-            <h2>Selected Characters</h2>
-
-            <p>{selectedChars.length > 0 ? selectedChars : "None"}</p>
-
-            {/* <h2>Hiragana</h2> */}
-            <div className="rows">{rows}</div>
-        </div>
-    );
+    if (props.isVisible) {
+        return (
+            <div className="kana-chars">
+                <h1>Characters</h1>
+                <button onClick={() => props.setStudyMode(true)}>Study!</button>
+                <div className="rows">{rows}</div>
+            </div>
+        );
+    }
 }
 
 export default Characters;

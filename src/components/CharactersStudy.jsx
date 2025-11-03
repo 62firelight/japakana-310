@@ -5,14 +5,19 @@ function CharactersStudy(props) {
     const charactersToStudy = props.selectedChars;
 
     const [currentCharQuestion, setCurrentCharQuestion] = useState(
-        charactersToStudy.length > 0 ? charactersToStudy[0] : ""
+        props.studyMode ? charactersToStudy[0] : ""
     );
     const [currentAnswer, setCurrentAnswer] = useState("");
     const [progressIndex, setProgressIndex] = useState(0);
 
-    function resetProgress() {
+    function resetProgress(fullReset = false) {
         setProgressIndex(0);
-        setCurrentCharQuestion(charactersToStudy[0]);
+
+        if (fullReset) {
+            setCurrentCharQuestion("");
+        } else {
+            setCurrentCharQuestion(charactersToStudy[0]);
+        }
     }
 
     if (props.isVisible && currentCharQuestion === "") {
@@ -41,9 +46,9 @@ function CharactersStudy(props) {
             setProgressIndex(progressIndex + 1);
         } else {
             alert("Finished!");
-            props.setStudyMode(false);
             props.setSelectedChars([]);
-            resetProgress();
+            resetProgress(true);
+            props.setStudyMode(false);
         }
 
         setCurrentAnswer("");

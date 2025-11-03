@@ -50,6 +50,20 @@ function Characters(props) {
         }
     }
 
+    function selectAllChars() {
+        // Generate a new array and fill it with all characters
+        let newSelectedChars = [];
+        for (const row of rows) {
+            for (const charButton of row.props.children) {
+                newSelectedChars = [...newSelectedChars, charButton.props.char];
+            }
+        }
+
+        // Override current array of selected characters
+        props.setSelectedChars(newSelectedChars)
+        
+    }
+
     if (props.isVisible) {
         return (
             <div className="kana-chars">
@@ -65,6 +79,11 @@ function Characters(props) {
                 >
                     Study!
                 </button>
+                <div className="helper-buttons">
+                    <button
+                        onClick={selectAllChars}
+                    >Select All</button>
+                </div>
                 <div className="rows">{rows}</div>
             </div>
         );

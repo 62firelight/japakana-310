@@ -60,6 +60,8 @@ function CharactersStudy(props) {
                 <h1>Study</h1>
 
                 <form className="character-study" onSubmit={handleSubmit}>
+                    <div className="progress-indicator">{progressIndex + 1} / {charactersToStudy.length}</div>
+
                     <div className="current-char">{currentCharQuestion}</div>
 
                     <input

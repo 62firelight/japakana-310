@@ -9,6 +9,7 @@ function CharactersStudy(props) {
     );
     const [currentAnswer, setCurrentAnswer] = useState("");
     const [progressIndex, setProgressIndex] = useState(0);
+    const [answerStatus, setAnswerStatus] = useState("");
 
     function resetProgress(fullReset = false) {
         setProgressIndex(0);
@@ -24,6 +25,18 @@ function CharactersStudy(props) {
         resetProgress();
     }
 
+    function checkAnswer() {
+        // Check if the provided answer is correct
+        if (
+            ANSWERS.get(currentCharQuestion) == currentAnswer ||
+            ANSWERS.getKey(currentCharQuestion) == currentAnswer
+        ) {
+            setAnswerStatus("Correct! Press ENTER to continue.");
+        } else {
+            setAnswerStatus("Incorrect! Press ENTER to continue.");
+        }
+    }
+
     function handleChange(event) {
         setCurrentAnswer(event.target.value);
     }
@@ -31,27 +44,20 @@ function CharactersStudy(props) {
     function handleSubmit(event) {
         event.preventDefault();
 
-        // Check if the provided answer is correct
-        if (
-            ANSWERS.get(currentCharQuestion) == currentAnswer ||
-            ANSWERS.getKey(currentCharQuestion) == currentAnswer
-        ) {
-            alert("Correct!");
-        } else {
-            alert("Incorrect");
-        }
-
-        if (progressIndex < charactersToStudy.length - 1) {
+        if (answerStatus.length <= 0) {
+            checkAnswer();
+        } else if (progressIndex < charactersToStudy.length - 1) {
             setCurrentCharQuestion(charactersToStudy[progressIndex + 1]);
             setProgressIndex(progressIndex + 1);
+            setAnswerStatus("");
+            setCurrentAnswer("");
         } else {
-            alert("Finished!");
+            setAnswerStatus("");
+            setCurrentAnswer("");
             props.setSelectedChars([]);
             resetProgress(true);
             props.setStudyMode(false);
         }
-
-        setCurrentAnswer("");
     }
 
     if (props.isVisible) {
@@ -60,9 +66,19 @@ function CharactersStudy(props) {
                 <h1>Study</h1>
 
                 <form className="character-study" onSubmit={handleSubmit}>
-                    <div className="progress-indicator">{progressIndex + 1} / {charactersToStudy.length}</div>
+                    <div className="progress-indicator">
+                        {progressIndex + 1} / {charactersToStudy.length}
+                    </div>
 
                     <div className="current-char">{currentCharQuestion}</div>
+
+                    <div
+                        className={
+                            answerStatus[0] == "C" ? "correct" : "incorrect"
+                        }
+                    >
+                        {answerStatus}
+                    </div>
 
                     <input
                         type="text"
@@ -71,6 +87,7 @@ function CharactersStudy(props) {
                         autoComplete="off"
                         value={currentAnswer}
                         onChange={handleChange}
+                        readOnly={answerStatus.length > 0}
                         placeholder="Enter the English translation"
                     />
 

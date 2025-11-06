@@ -60,8 +60,12 @@ function Characters(props) {
         }
 
         // Override current array of selected characters
-        props.setSelectedChars(newSelectedChars)
-        
+        props.setSelectedChars(newSelectedChars);
+    }
+
+    function unselectAllChars() {
+        // Reset array of selected characters
+        props.setSelectedChars([]);
     }
 
     if (props.isVisible) {
@@ -80,9 +84,16 @@ function Characters(props) {
                     Study!
                 </button>
                 <div className="helper-buttons">
-                    <button
-                        onClick={selectAllChars}
-                    >Select All</button>
+                    <div className="selection-buttons">
+                        
+                        {props.selectedChars.length < 46 ? (
+                            <button onClick={selectAllChars}>Select All</button>
+                        ) : (
+                            <button onClick={unselectAllChars}>
+                                Unselect All
+                            </button>
+                        )}
+                    </div>
                 </div>
                 <div className="rows">{rows}</div>
             </div>

@@ -15,6 +15,8 @@ function CharactersStudy(props) {
     // Correct/incorrect answer tracking
     const [answerSummary, setAnswerSummary] = useState({});
     const [answerSummaryComponent, setAnswerSummaryComponent] = useState("");
+    const [correctAnswers, setCorrectAnswers] = useState(0);
+    const [wrongAnswers, setWrongAnswers] = useState(0);
 
     function resetProgress(fullReset = false) {
         setProgressIndex(0);
@@ -37,12 +39,14 @@ function CharactersStudy(props) {
             ANSWERS.getKey(currentCharQuestion) == currentAnswer
         ) {
             setAnswerStatus("Correct! Press ENTER to continue.");
+            setCorrectAnswers(correctAnswers + 1);
             setAnswerSummary({
                 ...answerSummary,
                 [currentCharQuestion]: true,
             });
         } else {
             setAnswerStatus("Incorrect! Press ENTER to continue.");
+            setWrongAnswers(wrongAnswers + 1);
             setAnswerSummary({
                 ...answerSummary,
                 [currentCharQuestion]: false,
@@ -90,6 +94,8 @@ function CharactersStudy(props) {
         resetProgress(true);
         setAnswerSummary({});
         setAnswerSummaryComponent("");
+        setCorrectAnswers(0);
+        setWrongAnswers(0);
         props.setStudyMode(false);
     }
 
@@ -132,9 +138,14 @@ function CharactersStudy(props) {
                 ) : (
                     <div className="summary">
                         <button onClick={finishStudySession}>Finish</button>
-
                         <h2>Answer Summary</h2>
-
+                        You got{" "}
+                        <strong className="correct">
+                            {correctAnswers}
+                        </strong>{" "}
+                        correct and{" "}
+                        <strong className="incorrect">{wrongAnswers}</strong>{" "}
+                        wrong.
                         <ul className="answer-summary">
                             {answerSummaryComponent}
                         </ul>

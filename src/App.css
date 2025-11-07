@@ -18,6 +18,15 @@
   /* float: left; */
 }
 
+.kana-groups {
+  display: flex;
+  flex-direction: row;
+}
+
+.rows {
+  margin: 0.5rem;
+}
+
 .row {
   display: flex;
   flex-direction: row;

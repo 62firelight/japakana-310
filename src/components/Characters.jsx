@@ -3,7 +3,8 @@ import KATAKANA_CHARS from "../util/KatakanaChars";
 import CharButton from "./CharButton";
 
 function Characters(props) {
-    const rows = createRows(props.type);
+    const hiraganaRows = createRows("h");
+    const katakanaRows = createRows("k");
 
     function createRows(type) {
         let chosenType = null;
@@ -50,7 +51,7 @@ function Characters(props) {
         }
     }
 
-    function selectAllChars() {
+    function selectAllChars(rows) {
         // Generate a new array and fill it with all characters
         let newSelectedChars = [];
         for (const row of rows) {
@@ -71,7 +72,6 @@ function Characters(props) {
     if (props.isVisible) {
         return (
             <div className="kana-chars">
-                <h1>Characters</h1>
                 <button
                     onClick={() =>
                         props.selectedChars.length > 0
@@ -83,19 +83,44 @@ function Characters(props) {
                 >
                     Study!
                 </button>
-                <div className="helper-buttons">
-                    <div className="selection-buttons">
-                        
-                        {props.selectedChars.length < 46 ? (
-                            <button onClick={selectAllChars}>Select All</button>
-                        ) : (
-                            <button onClick={unselectAllChars}>
-                                Unselect All
-                            </button>
-                        )}
+                <div className="helper-buttons"></div>
+
+                <div className="kana-groups">
+                    <div className="rows">
+                        <h3>Hiragana</h3>
+                        <div className="selection-buttons">
+                            {props.selectedChars.length < 46 ? (
+                                <button
+                                    onClick={() => selectAllChars(hiraganaRows)}
+                                >
+                                    Select All
+                                </button>
+                            ) : (
+                                <button onClick={unselectAllChars}>
+                                    Unselect All
+                                </button>
+                            )}
+                        </div>
+                        {hiraganaRows}
+                    </div>
+                    <div className="rows">
+                        <h3>Katakana</h3>
+                        <div className="selection-buttons">
+                            {props.selectedChars.length < 46 ? (
+                                <button
+                                    onClick={() => selectAllChars(katakanaRows)}
+                                >
+                                    Select All
+                                </button>
+                            ) : (
+                                <button onClick={unselectAllChars}>
+                                    Unselect All
+                                </button>
+                            )}
+                        </div>
+                        {katakanaRows}
                     </div>
                 </div>
-                <div className="rows">{rows}</div>
             </div>
         );
     }

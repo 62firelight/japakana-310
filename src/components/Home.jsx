@@ -18,6 +18,8 @@ function Home(props) {
                 setSelectedChars={setSelectedChars}
             />
 
+            <h1>Characters</h1>
+
             <Characters
                 type="h"
                 isVisible={studyMode == false}

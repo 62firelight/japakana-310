@@ -1,77 +1,13 @@
 import HIRAGANA_CHARS from "../util/HiraganaChars";
 import KATAKANA_CHARS from "../util/KatakanaChars";
+import CharacterRows from "./CharacterRows";
 import CharButton from "./CharButton";
 
 function Characters(props) {
-    const hiraganaRows = createRows("h");
-    const katakanaRows = createRows("k");
-
-    function createRows(type) {
-        let chosenType = null;
-
-        switch (type) {
-            case "h":
-                chosenType = HIRAGANA_CHARS;
-                break;
-            case "k":
-                chosenType = KATAKANA_CHARS;
-                break;
-            default:
-                chosenType = HIRAGANA_CHARS;
-                break;
-        }
-
-        return chosenType.map((row, index) => (
-            <div className="row" key={index}>
-                {row.map((char) => (
-                    <CharButton
-                        char={char}
-                        key={char}
-                        isSelected={props.selectedChars.includes(char)}
-                        setSelectedChars={setNewSelectedChars}
-                    />
-                ))}
-            </div>
-        ));
-    }
-
-    function setNewSelectedChars(newChar) {
-        if (newChar === "ー") {
-            return;
-        }
-
-        if (!props.selectedChars.includes(newChar)) {
-            // Add character if not selected
-            props.setSelectedChars([...props.selectedChars, newChar]);
-        } else {
-            // Remove character if already selected
-            props.setSelectedChars(
-                props.selectedChars.filter((char) => char !== newChar)
-            );
-        }
-    }
-
-    function selectAllChars(rows) {
-        // Generate a new array and fill it with all characters
-        let newSelectedChars = [];
-        for (const row of rows) {
-            for (const charButton of row.props.children) {
-                newSelectedChars = [...newSelectedChars, charButton.props.char];
-            }
-        }
-
-        // Override current array of selected characters
-        props.setSelectedChars(newSelectedChars);
-    }
-
-    function unselectAllChars() {
-        // Reset array of selected characters
-        props.setSelectedChars([]);
-    }
-
     if (props.isVisible) {
         return (
             <div className="kana-chars">
+                <h1>Characters</h1>
                 <button
                     onClick={() =>
                         props.selectedChars.length > 0
@@ -86,40 +22,19 @@ function Characters(props) {
                 <div className="helper-buttons"></div>
 
                 <div className="kana-groups">
-                    <div className="rows">
-                        <h3>Hiragana</h3>
-                        <div className="selection-buttons">
-                            {props.selectedChars.length < 46 ? (
-                                <button
-                                    onClick={() => selectAllChars(hiraganaRows)}
-                                >
-                                    Select All
-                                </button>
-                            ) : (
-                                <button onClick={unselectAllChars}>
-                                    Unselect All
-                                </button>
-                            )}
-                        </div>
-                        {hiraganaRows}
-                    </div>
-                    <div className="rows">
-                        <h3>Katakana</h3>
-                        <div className="selection-buttons">
-                            {props.selectedChars.length < 46 ? (
-                                <button
-                                    onClick={() => selectAllChars(katakanaRows)}
-                                >
-                                    Select All
-                                </button>
-                            ) : (
-                                <button onClick={unselectAllChars}>
-                                    Unselect All
-                                </button>
-                            )}
-                        </div>
-                        {katakanaRows}
-                    </div>
+                    <CharacterRows
+                        isVisible={props.isVisible}
+                        kanaType="h"
+                        selectedChars={props.selectedChars}
+                        setSelectedChars={props.setSelectedChars}
+                    />
+
+                    <CharacterRows
+                        isVisible={props.isVisible}
+                        kanaType="k"
+                        selectedChars={props.selectedChars}
+                        setSelectedChars={props.setSelectedChars}
+                    />
                 </div>
             </div>
         );

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import ANSWERS from "../util/Answers";
+import HIRAGANA_ANSWERS from "../util/HIRAGANA_ANSWERS";
+import KATAKANA_ANSWERS from "../util/KATAKANA_ANSWERS";
 
 function CharactersStudy(props) {
     const charactersToStudy = props.selectedChars;
@@ -35,8 +36,8 @@ function CharactersStudy(props) {
     function checkAnswer() {
         // Check if the provided answer is correct
         if (
-            ANSWERS.get(currentCharQuestion) == currentAnswer ||
-            ANSWERS.getKey(currentCharQuestion) == currentAnswer
+            HIRAGANA_ANSWERS.get(currentCharQuestion) == currentAnswer ||
+            KATAKANA_ANSWERS.get(currentCharQuestion) == currentAnswer
         ) {
             setAnswerStatus("Correct! Press ENTER to continue.");
             setCorrectAnswers(correctAnswers + 1);

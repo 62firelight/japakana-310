@@ -46,6 +46,10 @@
   background-color: orange;
 }
 
+.dummy-button {
+  pointer-events: none;
+}
+
 .character-study {
   display: flex;
   flex-direction: column;

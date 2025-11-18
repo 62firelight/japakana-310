@@ -1,6 +1,7 @@
 import HIRAGANA_CHARS from "../util/HiraganaChars";
 import KATAKANA_CHARS from "../util/KatakanaChars";
 import CharButton from "./CharButton";
+import DummyButton from "./DummyButton";
 
 function CharacterRows(props) {
     let chosenType = "h";
@@ -25,14 +26,20 @@ function CharacterRows(props) {
     function createRows() {
         return chosenType.map((row, index) => (
             <div className="row" key={index}>
-                {row.map((char) => (
-                    <CharButton
-                        char={char}
-                        key={char}
-                        isSelected={props.selectedChars.includes(char)}
-                        setSelectedChars={setNewSelectedChars}
-                    />
-                ))}
+                {row.map((char) => {
+                    if (!parseInt(char)) {
+                        return (
+                            <CharButton
+                                char={char}
+                                key={char}
+                                isSelected={props.selectedChars.includes(char)}
+                                setSelectedChars={setNewSelectedChars}
+                            />
+                        );
+                    } else {
+                        return <DummyButton key={char}></DummyButton>;
+                    }
+                })}
             </div>
         ));
     }
@@ -58,24 +65,33 @@ function CharacterRows(props) {
         let newSelectedChars = [];
         for (const row of rows) {
             for (const charButton of row.props.children) {
-                newSelectedChars = [...newSelectedChars, charButton.props.char];
+                if (charButton.props.char) {
+                    newSelectedChars = [
+                        ...newSelectedChars,
+                        charButton.props.char,
+                    ];
+                }
             }
         }
 
         // Override current array of selected characters
-        props.setSelectedChars(Array.from(new Set(props.selectedChars.concat(newSelectedChars))));
+        props.setSelectedChars(
+            Array.from(new Set(props.selectedChars.concat(newSelectedChars)))
+        );
     }
 
     function unselectAllChars() {
         // Unselect all the rows
         let newSelectedChars = props.selectedChars;
-        console.log(newSelectedChars);
         for (const row of rows) {
             for (const charButton of row.props.children) {
-                newSelectedChars = newSelectedChars.filter((char) => char !== charButton.props.char);
+                if (charButton.props.char) {
+                    newSelectedChars = newSelectedChars.filter(
+                        (char) => char !== charButton.props.char
+                    );
+                }
             }
         }
-        console.log(newSelectedChars);
 
         // Override current array of selected characters
         props.setSelectedChars(Array.from(new Set(newSelectedChars)));
@@ -87,7 +103,12 @@ function CharacterRows(props) {
                 <h3>{kanaName}</h3>
                 <div className="selection-buttons">
                     {!chosenType.every((row) =>
-                        row.every((char) => props.selectedChars.includes(char))
+                        row.every((char) => {
+                            if (parseInt(char)) {
+                                return true;
+                            }
+                            return props.selectedChars.includes(char);
+                        })
                     ) ? (
                         <button onClick={() => selectAllChars(rows)}>
                             Select All

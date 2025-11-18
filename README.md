@@ -1,12 +1,9 @@
-# React + Vite
+# Japakana
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple web application that lets Japanese language learners study any combination of Hiragana and Katakana characters.
 
-Currently, two official plugins are available:
+## Usage
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Access the app here: https://japakana62.lktfirelight.workers.dev/
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Alternatively, you can clone the repo, run `npm install` inside the cloned repo to install dependencies and then `npm start` to start the development server at http://localhost:5173/.

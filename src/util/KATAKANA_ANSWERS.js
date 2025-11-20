@@ -1,6 +1,7 @@
 import BiMap from "bidirectional-map";
 
 const KATAKANA_ANSWERS = new BiMap({
+    // Basic Katakana Sounds
     ア: "a",
     イ: "i",
     ウ: "u",
@@ -46,7 +47,69 @@ const KATAKANA_ANSWERS = new BiMap({
     ロ: "ro",
     ワ: "wa", 
     ヲ: "wo",
-    ン: "n"
+    ン: "n",
+
+    // Katakana with Diacritical Marks
+    ガ: "ga",
+    ギ: "gi",
+    グ: "gu",
+    ゲ: "ge",
+    ゴ: "go",
+    ザ: "za",
+    ジ: "ji",
+    ズ: "zu",
+    ゼ: "ze",
+    ゾ: "zo",
+    ダ: "da",
+    ヂ: "ji",
+    ヅ: "zu",
+    デ: "de",
+    ド: "do",
+    バ: "ba",
+    ビ: "bi",
+    ブ: "bu",
+    ベ: "be",
+    ボ: "bo",
+    パ: "pa",
+    ピ: "pi",
+    プ: "pu",
+    ペ: "pe",
+    ポ: "po",
+
+    // Contracted Sounds
+    キャ: "kya",
+    キュ: "kyu",
+    キョ: "kyo",
+    シャ: "sha",
+    シュ: "shu",
+    ショ: "sho",
+    チャ: "cha",
+    チュ: "chu",
+    チョ: "cho",
+    ニャ: "nya",
+    ニュ: "nyu",
+    ニョ: "nyo",
+    ヒャ: "hya",
+    ヒュ: "hyu",
+    ヒョ: "hyo",
+    ミャ: "mya",
+    ミュ: "myu",
+    ミョ: "myo",
+    リャ: "rya",
+    リュ: "ryu",
+    リョ: "ryo",
+    ギャ: "gya",
+    ギュ: "gyu",
+    ギョ: "gyo",
+    ジャ: "ja",
+    ジュ: "ju",
+    ジョ: "jo",
+    ビャ: "bya",
+    ビュ: "byu",
+    ビョ: "byo",
+    ピャ: "pya",
+    ピュ: "pyu",
+    ピョ: "pyo"
 });
 
 export default KATAKANA_ANSWERS;

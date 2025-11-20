@@ -1,6 +1,7 @@
 import BiMap from "bidirectional-map";
 
 const HIRAGANA_ANSWERS = new BiMap({
+    // Basic Hiragana Syllables
     あ: "a",
     い: "i",
     う: "u",
@@ -46,7 +47,69 @@ const HIRAGANA_ANSWERS = new BiMap({
     ろ: "ro",
     わ: "wa", 
     を: "wo",
-    ん: "n"
+    ん: "n",
+
+    // Hiragana with Diacritical Marks
+    が: "ga",
+    ぎ: "gi",
+    ぐ: "gu",
+    げ: "ge",
+    ご: "go",
+    ざ: "za",
+    じ: "ji",
+    ず: "zu",
+    ぜ: "ze",
+    ぞ: "zo",
+    だ: "da",
+    ぢ: "ji",
+    づ: "zu",
+    で: "de",
+    ど: "do",
+    ば: "ba",
+    び: "bi",
+    ぶ: "bu",
+    べ: "be",
+    ぼ: "bo",
+    ぱ: "pa",
+    ぴ: "pi",
+    ぷ: "pu",
+    ぺ: "pe",
+    ぽ: "po",
+
+    // Contracted Sounds
+    きゃ: "kya",
+    きゅ: "kyu",
+    きょ: "kyo",
+    しゃ: "sha",
+    しゅ: "shu",
+    しょ: "sho",
+    ちゃ: "cha",
+    ちゅ: "chu",
+    ちょ: "cho",
+    にゃ: "nya",
+    にゅ: "nyu",
+    にょ: "nyo",
+    ひゃ: "hya",
+    ひゅ: "hyu",
+    ひょ: "hyo",
+    みゃ: "mya",
+    みゅ: "myu",
+    みょ: "myo",
+    りゃ: "rya",
+    りゅ: "ryu",
+    りょ: "ryo",
+    ぎゃ: "gya",
+    ぎゅ: "gyu",
+    ぎょ: "gyo",
+    じゃ: "ja",
+    じゅ: "ju",
+    じょ: "jo",
+    びゃ: "bya",
+    びゅ: "byu",
+    びょ: "byo",
+    ぴゃ: "pya",
+    ぴゅ: "pyu",
+    ぴょ: "pyo"
 });
 
 export default HIRAGANA_ANSWERS;

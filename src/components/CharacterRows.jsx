@@ -30,6 +30,7 @@ function CharacterRows(props) {
                     if (!parseInt(char)) {
                         return (
                             <CharButton
+                                className="char"
                                 char={char}
                                 key={char}
                                 isSelected={props.selectedChars.includes(char)}

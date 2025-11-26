@@ -61,7 +61,7 @@ const HIRAGANA_ANSWERS = new BiMap({
     ぜ: "ze",
     ぞ: "zo",
     だ: "da",
-    ぢ: "ji",
+    // ぢ: "ji",
     づ: "zu",
     で: "de",
     ど: "do",

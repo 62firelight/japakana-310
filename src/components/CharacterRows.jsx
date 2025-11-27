@@ -26,6 +26,11 @@ function CharacterRows(props) {
     function createRows() {
         return chosenType.map((row, index) => (
             <div className="row" key={index}>
+                <input
+                    type="checkbox"
+                    name={index}
+                    onChange={(e) => toggleRow(row, e.target.checked)}
+                ></input>
                 {row.map((char) => {
                     if (!parseInt(char)) {
                         return (
@@ -43,6 +48,30 @@ function CharacterRows(props) {
                 })}
             </div>
         ));
+    }
+
+    function toggleRow(row, toggleOn = true) {
+        let newSelectedChars = [];
+        for (const char of row) {
+            if (!parseInt(char)) {
+                newSelectedChars = [...newSelectedChars, char];
+            }
+        }
+
+        if (toggleOn) {
+            // merge the selected chars and the new chars to select (no duplicates)
+            const mergedArray = [...props.selectedChars, ...newSelectedChars];
+            const noDuplicateArray = [...new Set(mergedArray)];
+
+            props.setSelectedChars(noDuplicateArray);
+        } else {
+            // remove all of the new chars from the selected chars array
+            props.setSelectedChars(
+                props.selectedChars.filter(
+                    (char) => !newSelectedChars.includes(char)
+                )
+            );
+        }
     }
 
     function setNewSelectedChars(newChar) {
@@ -65,7 +94,7 @@ function CharacterRows(props) {
         // Generate a new array and fill it with all characters
         let newSelectedChars = [];
         for (const row of rows) {
-            for (const charButton of row.props.children) {
+            for (const charButton of row.props.children[1]) {
                 if (charButton.props.char) {
                     newSelectedChars = [
                         ...newSelectedChars,
@@ -85,7 +114,7 @@ function CharacterRows(props) {
         // Unselect all the rows
         let newSelectedChars = props.selectedChars;
         for (const row of rows) {
-            for (const charButton of row.props.children) {
+            for (const charButton of row.props.children[1]) {
                 if (charButton.props.char) {
                     newSelectedChars = newSelectedChars.filter(
                         (char) => char !== charButton.props.char

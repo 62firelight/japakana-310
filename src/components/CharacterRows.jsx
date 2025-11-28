@@ -24,30 +24,50 @@ function CharacterRows(props) {
     const rows = createRows(props.kanaType);
 
     function createRows() {
-        return chosenType.map((row, index) => (
-            <div className="row" key={index}>
-                <input
-                    type="checkbox"
-                    name={index}
-                    onChange={(e) => toggleRow(row, e.target.checked)}
-                ></input>
-                {row.map((char) => {
-                    if (!parseInt(char)) {
-                        return (
-                            <CharButton
-                                className="char"
-                                char={char}
-                                key={char}
-                                isSelected={props.selectedChars.includes(char)}
-                                setSelectedChars={setNewSelectedChars}
-                            />
-                        );
-                    } else {
-                        return <DummyButton key={char}></DummyButton>;
-                    }
-                })}
-            </div>
-        ));
+        return chosenType.map((row, index) => {
+            let categoryHeading = "";
+            switch (index) {
+                case 0:
+                    categoryHeading = (<h4>Basic</h4>);
+                    break;
+                case 11:
+                    categoryHeading = (<h4>Additional</h4>);
+                    break;
+                case 17:
+                    categoryHeading = (<h4>Contracted</h4>);
+                    break;
+            }
+
+            return (
+                <div>
+                    {categoryHeading}
+                    <div className="row" key={index}>
+                        <input
+                            type="checkbox"
+                            name={index}
+                            onChange={(e) => toggleRow(row, e.target.checked)}
+                        ></input>
+                        {row.map((char) => {
+                            if (!parseInt(char)) {
+                                return (
+                                    <CharButton
+                                        className="char"
+                                        char={char}
+                                        key={char}
+                                        isSelected={props.selectedChars.includes(
+                                            char
+                                        )}
+                                        setSelectedChars={setNewSelectedChars}
+                                    />
+                                );
+                            } else {
+                                return <DummyButton key={char}></DummyButton>;
+                            }
+                        })}
+                    </div>
+                </div>
+            );
+        });
     }
 
     function toggleRow(row, toggleOn = true) {
